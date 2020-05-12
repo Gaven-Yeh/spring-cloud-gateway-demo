@@ -21,19 +21,16 @@ spring:
       client:
         registration:
           gateway:
-            provider: uaa
+            provider: keycloak
             client-id: gateway
-            client-secret: secret
+            client-secret: d40a26a3-2eaf-4597-8cf5-e023364ea028
             authorization-grant-type: authorization_code
             redirect-uri-template: "{baseUrl}/login/oauth2/code/{registrationId}"
             scope: openid,profile,email,resource.read
         provider:
-          uaa:
-            authorization-uri: http://localhost:8090/uaa/oauth/authorize
-            token-uri: http://uaa:8090/uaa/oauth/token
-            user-info-uri: http://uaa:8090/uaa/userinfo
-            user-name-attribute: sub
-            jwk-set-uri: http://uaa:8090/uaa/token_keys
+          keycloak:
+            issuer-uri: http://localhost:8180/auth/realms/oauth2-demo
+
 #  cloud:
 #    gateway:
 #      routes:
